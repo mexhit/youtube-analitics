@@ -1,5 +1,13 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Configuration
+
+- Create a `.env.local` file at the project root (not committed to VCS).
+- Put your YouTube API key there as `YOUTUBE_API_KEY=your_key_here`.
+- Alternatively (not recommended), to expose to the browser, use `NEXT_PUBLIC_YOUTUBE_API_KEY`.
+
+An example file is provided: `.env.example`.
+
 ## Getting Started
 
 First, run the development server:
