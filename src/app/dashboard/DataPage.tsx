@@ -5,6 +5,7 @@ import fs from "fs";
 import Link from "next/link";
 import { PlayCircleFilled } from "@ant-design/icons";
 import Main from "@/app/dashboard/main";
+import VideoCard from "@/app/dashboard/VideoCard";
 import { google } from "googleapis";
 const path = "./data-1.json";
 
@@ -247,17 +248,16 @@ const DataPage = async ({
       <Main tesData={graphData.reverse()} />
       <div className="flex w-full flex-wrap">
         {dataArray.map((item) => {
+          const id = item.id || item?.snippet?.resourceId?.videoId;
+          const key = `${item.channelId || id}-${item?.snippet?.title}`;
           return (
-            <div key={`${item.channelId}-${item.title}`} className="w-3/12 p-2">
-              <Link
-                href={`https://www.youtube.com/watch?v=${item.id}`}
-                target="_blank"
-              >
-                <img src={item.snippet.thumbnails.high.url} />
-                <div>{item.snippet.title}</div>
-                <div>Views: {formatNumber(item?.statistics.viewCount)}</div>
-              </Link>
-            </div>
+            <VideoCard
+              key={key}
+              id={id}
+              title={item?.snippet?.title}
+              thumbnailUrl={item?.snippet?.thumbnails?.high?.url}
+              viewCount={item?.statistics?.viewCount}
+            />
           );
         })}
       </div>
