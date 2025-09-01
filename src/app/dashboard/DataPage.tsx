@@ -60,7 +60,7 @@ const DataPage = async ({
 
     const statsArray: any = await getVideosById(videoIds);
 
-    const statsMap = statsArray.reduce((acc, curr) => {
+    const statsMap = statsArray.reduce((acc: any, curr: any) => {
       const id = curr.id;
 
       if (id) {
@@ -68,7 +68,7 @@ const DataPage = async ({
       }
 
       return acc;
-    }, {});
+    }, {} as any);
 
     const data = _.merge(itemsMap, statsMap);
 
