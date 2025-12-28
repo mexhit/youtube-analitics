@@ -34,7 +34,7 @@ const DataPage = async ({
     .find({ id: searchParams.channel })
     .value();
 
-  const channel = selectedChannel || Channels.BigBrother;
+  const channel = selectedChannel || Channels.Veritasium;
 
   const channelId = channel.id;
 

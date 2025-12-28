@@ -3,9 +3,9 @@ export const Channels = {
     id: "UCHxjdViHPvbFKiOfj74IbeQ",
     name: "Te Pa Ekspozuarit",
   },
-  BigBrother: {
-    id: "UCVS1iJPmb3eGaf8oSViN1BQ",
-    name: "Big Brother",
+  Veritasium: {
+    id: "UCHnyfMqiRRG1u-2MsSQLbXA",
+    name: "Veritasium",
   },
   TopChannel: {
     id: "UCyny-dfYPbE-CjAkzkZqF8A",
