@@ -99,7 +99,7 @@ const DataPage = async ({
   async function getChanelRecentUpload(channelId: string) {
     const params = {
       part: ["contentDetails"],
-      id: channelId,
+      id: [channelId],
     };
 
     const channel: any = await youtube.channels.list(params);
@@ -152,7 +152,7 @@ const DataPage = async ({
           part: ["snippet"],
           channelId: channelId,
           maxResults: maxResults,
-          order: ["date"],
+          order: "date",
           pageToken: nextPage,
         };
 

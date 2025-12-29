@@ -38,7 +38,7 @@ function CustomTooltip({ active, payload }: any) {
   return null;
 }
 
-export default function Main({ tesData }) {
+export default function Main({ tesData }:{ tesData: any[] }) {
   const count = tesData.length;
   const barWidth = 14;
   const minChartWidth = 1200;
