@@ -1,4 +1,4 @@
-import { DashboardMenu } from "@/app/dashboard/DashboardMenu";
+import { DashboardMenu } from "@/app/dashboard/[channelId]/live/[live]/DashboardMenu";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (

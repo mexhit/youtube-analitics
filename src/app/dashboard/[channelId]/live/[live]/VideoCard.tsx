@@ -44,7 +44,10 @@ const VideoCard: React.FC<Props> = ({ id, title, thumbnailUrl, viewCount }) => {
                 Views: {formatNumberCompact(viewCount)}
               </div>
             </div>
-            <span className="mt-1 shrink-0 text-neutral-500 group-hover:text-neutral-300" aria-hidden>
+            <span
+              className="mt-1 shrink-0 text-neutral-500 group-hover:text-neutral-300"
+              aria-hidden
+            >
               ↗
             </span>
           </div>

@@ -1,4 +1,4 @@
-export const Channels = {
+export const Channels: { [key: string]: { id: string; name: string } } = {
   TePaEkspozuar: {
     id: "UCHxjdViHPvbFKiOfj74IbeQ",
     name: "Te Pa Ekspozuarit",

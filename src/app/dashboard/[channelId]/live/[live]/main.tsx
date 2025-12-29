@@ -24,11 +24,17 @@ function CustomTooltip({ active, payload }: any) {
         <div className="font-semibold mb-1 line-clamp-2">{p.title}</div>
         <div className="flex gap-4">
           <div className="flex items-center gap-2">
-            <span className="inline-block h-2 w-2 rounded-sm" style={{ background: "var(--bar-views)" }} />
+            <span
+              className="inline-block h-2 w-2 rounded-sm"
+              style={{ background: "var(--bar-views)" }}
+            />
             <span>Views: {formatNumber(p.views)}</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="inline-block h-2 w-2 rounded-sm" style={{ background: "var(--bar-comments)" }} />
+            <span
+              className="inline-block h-2 w-2 rounded-sm"
+              style={{ background: "var(--bar-comments)" }}
+            />
             <span>Comments: {formatNumber(p.comments)}</span>
           </div>
         </div>
@@ -38,7 +44,7 @@ function CustomTooltip({ active, payload }: any) {
   return null;
 }
 
-export default function Main({ tesData }:{ tesData: any[] }) {
+export default function Main({ tesData }: { tesData: any[] }) {
   const count = tesData.length;
   const barWidth = 14;
   const minChartWidth = 1200;
@@ -62,7 +68,11 @@ export default function Main({ tesData }:{ tesData: any[] }) {
     <div style={{ width: "100%", ...rootStyle }} className="overflow-x-auto">
       <div style={{ width: computedWidth }} className="min-w-full">
         <ResponsiveContainer width="100%" height={height}>
-          <BarChart data={tesData} margin={{ top: 16, right: 24, bottom: 8, left: 0 }} barCategoryGap={6}>
+          <BarChart
+            data={tesData}
+            margin={{ top: 16, right: 24, bottom: 8, left: 0 }}
+            barCategoryGap={6}
+          >
             <defs>
               <linearGradient id="gradViews" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor="#93c5fd" />
@@ -74,18 +84,58 @@ export default function Main({ tesData }:{ tesData: any[] }) {
               </linearGradient>
             </defs>
             <CartesianGrid strokeDasharray="3 3" stroke="var(--grid)" />
-            <XAxis dataKey="name" tick={{ fontSize: 11, fill: "var(--axis)" }} height={28} />
-            <YAxis yAxisId="left" tick={{ fontSize: 11, fill: "var(--axis)" }} tickFormatter={(v) => formatNumber(v as number)} width={70} />
-            <YAxis yAxisId="right" orientation="right" tick={{ fontSize: 11, fill: "var(--axis)" }} tickFormatter={(v) => formatNumber(v as number)} width={60} />
-            <Tooltip content={<CustomTooltip />} cursor={{ fill: "rgba(148,163,184,0.12)" }} />
+            <XAxis
+              dataKey="name"
+              tick={{ fontSize: 11, fill: "var(--axis)" }}
+              height={28}
+            />
+            <YAxis
+              yAxisId="left"
+              tick={{ fontSize: 11, fill: "var(--axis)" }}
+              tickFormatter={(v) => formatNumber(v as number)}
+              width={70}
+            />
+            <YAxis
+              yAxisId="right"
+              orientation="right"
+              tick={{ fontSize: 11, fill: "var(--axis)" }}
+              tickFormatter={(v) => formatNumber(v as number)}
+              width={60}
+            />
+            <Tooltip
+              content={<CustomTooltip />}
+              cursor={{ fill: "rgba(148,163,184,0.12)" }}
+            />
             <Legend
               verticalAlign="top"
               height={36}
               wrapperStyle={{ fontSize: 12 }}
-              formatter={(value) => (value === "views" ? "Views" : value === "comments" ? "Comments" : value)}
+              formatter={(value) =>
+                value === "views"
+                  ? "Views"
+                  : value === "comments"
+                    ? "Comments"
+                    : value
+              }
             />
-            <Bar yAxisId="left" dataKey="views" name="Views" fill="url(#gradViews)" radius={[4, 4, 0, 0]} barSize={barWidth} onClick={onClick} />
-            <Bar yAxisId="right" dataKey="comments" name="Comments" fill="url(#gradComments)" radius={[4, 4, 0, 0]} barSize={barWidth} onClick={onClick} />
+            <Bar
+              yAxisId="left"
+              dataKey="views"
+              name="Views"
+              fill="url(#gradViews)"
+              radius={[4, 4, 0, 0]}
+              barSize={barWidth}
+              onClick={onClick}
+            />
+            <Bar
+              yAxisId="right"
+              dataKey="comments"
+              name="Comments"
+              fill="url(#gradComments)"
+              radius={[4, 4, 0, 0]}
+              barSize={barWidth}
+              onClick={onClick}
+            />
           </BarChart>
         </ResponsiveContainer>
       </div>

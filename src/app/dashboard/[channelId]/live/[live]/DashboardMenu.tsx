@@ -5,14 +5,14 @@ import { MailOutlined } from "@ant-design/icons";
 import { Menu } from "antd";
 import type { MenuProps } from "antd";
 import { useRouter } from "next/navigation";
-import { Channels } from "@/app/dashboard/constants";
+import { Channels } from "@/app/dashboard/[channelId]/live/[live]/constants";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
 const DashboardMenu = () => {
   const router = useRouter();
   const channels = _.values(Channels).map((channel) =>
-    getItem(channel.name, channel.id)
+    getItem(channel.name, channel.id),
   );
   const items: MenuItem[] = [
     getItem("Channels", "sub1", <MailOutlined />, channels),
@@ -23,7 +23,7 @@ const DashboardMenu = () => {
     key: React.Key,
     icon?: React.ReactNode,
     children?: MenuItem[],
-    type?: "group"
+    type?: "group",
   ): MenuItem {
     return {
       key,
@@ -35,7 +35,7 @@ const DashboardMenu = () => {
   }
 
   function onSelect({ key }: { key: string }) {
-    router.push(`?channel=${key}&live=true`);
+    router.push(`/dashboard/${key}/live/true`);
   }
 
   return (

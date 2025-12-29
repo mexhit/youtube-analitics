@@ -1,21 +1,19 @@
 import _ from "lodash";
-import { Channels } from "@/app/dashboard/constants";
-import mockData from "@/app/dashboard/data.json";
+import mockData from "@/app/dashboard/[channelId]/live/[live]/data.json";
 import fs from "fs";
 import Link from "next/link";
 import { PlayCircleFilled } from "@ant-design/icons";
-import Main from "@/app/dashboard/main";
-import VideoCard from "@/app/dashboard/VideoCard";
 import { google } from "googleapis";
 const path = "./data-1.json";
-
 import { getYoutubeApiKey } from "@/config/youtube";
+import { Channels } from "@/app/dashboard/[channelId]/live/[live]/constants";
+import Main from "@/app/dashboard/[channelId]/live/[live]/main";
+import VideoCard from "@/app/dashboard/[channelId]/live/[live]/VideoCard";
 
 const youtube = google.youtube({
   version: "v3",
   auth: getYoutubeApiKey(),
 });
-
 
 const DataPage = async ({
   searchParams,
@@ -25,13 +23,13 @@ const DataPage = async ({
     live: string;
   };
 }) => {
-  const isLive = Boolean(searchParams.live === "true");
+  const isLive = Boolean(searchParams?.live === "true");
   const mock = !isLive;
   const pages = 4;
   const maxResults = 50;
   const selectedChannel = _.chain(Channels)
     .values()
-    .find({ id: searchParams.channel })
+    .find({ id: searchParams?.channel || "" })
     .value();
 
   const channel = selectedChannel || Channels.Veritasium;
@@ -106,7 +104,7 @@ const DataPage = async ({
 
     return _.get(
       channel,
-      "data.items.0.contentDetails.relatedPlaylists.uploads"
+      "data.items.0.contentDetails.relatedPlaylists.uploads",
     );
   }
 
