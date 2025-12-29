@@ -245,7 +245,7 @@ const DataPage = async ({
       </div>
       <Main tesData={graphData.reverse()} />
       <div className="flex w-full flex-wrap">
-        {dataArray.map((item) => {
+        {_.take(dataArray, 20).map((item) => {
           const id = item.id || item?.snippet?.resourceId?.videoId;
           const key = `${item.channelId || id}-${item?.snippet?.title}`;
           return (
