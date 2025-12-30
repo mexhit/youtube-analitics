@@ -1,0 +1,67 @@
+.dashboard-sidebar {
+    width: 260px;
+    height: 100vh;
+    background: #0f172a; /* slate-900 */
+    padding: 12px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.25);
+}
+
+.sidebar-header {
+    color: #e5e7eb;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    letter-spacing: 0.3px;
+}
+
+.dashboard-menu {
+    background: transparent !important;
+    border-right: none;
+}
+
+/* Submenu title */
+.dashboard-menu .ant-menu-submenu-title {
+    border-radius: 8px;
+    margin: 4px 0;
+    padding-left: 16px !important;
+    transition: background 0.2s ease;
+}
+
+.dashboard-menu .ant-menu-submenu-title:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* Menu items */
+.dashboard-menu .ant-menu-item {
+    border-radius: 8px;
+    margin: 4px 0;
+    padding-left: 36px !important;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* Hover */
+.dashboard-menu .ant-menu-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Selected item */
+.dashboard-menu .ant-menu-item-selected {
+    background: linear-gradient(
+            90deg,
+            rgba(59, 130, 246, 0.25),
+            rgba(59, 130, 246, 0.05)
+    ) !important;
+    color: #60a5fa !important;
+}
+
+/* Icons */
+.dashboard-menu .ant-menu-item-icon,
+.dashboard-menu .ant-menu-submenu-title .anticon {
+    color: #94a3b8;
+}
+
+/* Selected icon */
+.dashboard-menu .ant-menu-item-selected .anticon {
+    color: #60a5fa;
+}

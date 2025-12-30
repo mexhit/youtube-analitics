@@ -6,14 +6,17 @@ import { Menu } from "antd";
 import type { MenuProps } from "antd";
 import { useRouter } from "next/navigation";
 import { Channels } from "@/app/dashboard/[channelId]/live/[live]/constants";
+import "./dashboard-menu.css";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
 const DashboardMenu = () => {
   const router = useRouter();
+
   const channels = _.values(Channels).map((channel) =>
     getItem(channel.name, channel.id),
   );
+
   const items: MenuItem[] = [
     getItem("Channels", "sub1", <MailOutlined />, channels),
   ];
@@ -39,15 +42,18 @@ const DashboardMenu = () => {
   }
 
   return (
-    <Menu
-      defaultSelectedKeys={["5"]}
-      defaultOpenKeys={["sub1"]}
-      mode="inline"
-      theme="dark"
-      inlineCollapsed={false}
-      items={items}
-      onSelect={onSelect}
-    />
+    <aside className="dashboard-sidebar">
+      <div className="sidebar-header">Dashboard</div>
+
+      <Menu
+        mode="inline"
+        items={items}
+        defaultOpenKeys={["sub1"]}
+        theme="dark"
+        className="dashboard-menu"
+        onSelect={onSelect}
+      />
+    </aside>
   );
 };
 
