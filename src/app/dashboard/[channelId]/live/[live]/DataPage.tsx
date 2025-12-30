@@ -248,12 +248,13 @@ const DataPage = async ({
         {_.take(dataArray, 20).map((item) => {
           const id = item.id || item?.snippet?.resourceId?.videoId;
           const key = `${item.channelId || id}-${item?.snippet?.title}`;
+
           return (
             <VideoCard
               key={key}
               id={id}
               title={item?.snippet?.title}
-              thumbnailUrl={item?.snippet?.thumbnails?.high?.url}
+              thumbnailUrl={item?.snippet?.thumbnails?.medium?.url}
               viewCount={item?.statistics?.viewCount}
             />
           );
