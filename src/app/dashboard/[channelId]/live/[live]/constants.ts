@@ -3,6 +3,10 @@ export const Channels: { [key: string]: { id: string; name: string } } = {
     id: "UCHxjdViHPvbFKiOfj74IbeQ",
     name: "Te Pa Ekspozuarit",
   },
+  JoeRoganPodCast: {
+    id: "UCzQUP1qoWDoEbmsQxvdjxgQ",
+    name: "Joe Rogan Podcast",
+  },
   Veritasium: {
     id: "UCHnyfMqiRRG1u-2MsSQLbXA",
     name: "Veritasium",
