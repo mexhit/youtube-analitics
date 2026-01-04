@@ -34,14 +34,7 @@ const VideoCard = React.memo(
         >
           <article className="h-full overflow-hidden rounded-xl border border-neutral-800/60 bg-neutral-900 shadow-md transition-shadow hover:shadow-xl">
             <div className="relative aspect-video w-full bg-neutral-800">
-              <Image
-                src={thumbnailUrl}
-                alt={title}
-                width={480}
-                height={270}
-                className="object-cover w-full h-auto"
-                sizes="(max-width: 640px) 100vw, 480px"
-              />
+              <Image src={thumbnailUrl} alt={title} width={480} height={270} />
             </div>
 
             <div className="flex items-start gap-2 p-3">
