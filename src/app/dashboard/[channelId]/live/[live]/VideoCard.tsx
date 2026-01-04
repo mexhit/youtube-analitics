@@ -37,13 +37,10 @@ const VideoCard = React.memo(
               <Image
                 src={thumbnailUrl}
                 alt={title}
-                fill
-                sizes="(max-width: 768px) 100vw,
-                       (max-width: 1280px) 33vw,
-                       20vw"
-                className="object-cover"
-                loading="lazy"
-                unoptimized
+                width={480}
+                height={270}
+                className="object-cover w-full h-auto"
+                sizes="(max-width: 640px) 100vw, 480px"
               />
             </div>
 
