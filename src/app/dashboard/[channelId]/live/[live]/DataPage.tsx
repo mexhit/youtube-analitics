@@ -4,7 +4,6 @@ import fs from "fs";
 import Link from "next/link";
 import { PlayCircleFilled } from "@ant-design/icons";
 import { google } from "googleapis";
-const path = "./data-1.json";
 import { getYoutubeApiKey } from "@/config/youtube";
 import { Channels } from "@/app/dashboard/[channelId]/live/[live]/constants";
 import Main from "@/app/dashboard/[channelId]/live/[live]/main";
@@ -72,7 +71,6 @@ const DataPage = async ({
     const data = _.merge(itemsMap, statsMap);
 
     dataArray = _.values(data);
-    await writeFile(dataArray);
   }
 
   const graphData = dataArray.map((data, index) => {
@@ -202,18 +200,6 @@ const DataPage = async ({
     return Number(number).toLocaleString();
   }
 
-  function writeFile(jsonData: any) {
-    return new Promise((resolve, reject) => {
-      return fs.writeFile(path, JSON.stringify(jsonData), (err) => {
-        if (err) {
-          reject(err);
-        }
-
-        resolve(path);
-      });
-    });
-  }
-
   return (
     <div>
       <div className="text-4xl mb-5 flex">
@@ -245,7 +231,7 @@ const DataPage = async ({
       </div>
       <Main tesData={graphData.reverse()} />
       <div className="flex w-full flex-wrap">
-        {_.take(dataArray, 20).map((item) => {
+        {_.take(dataArray, 10000).map((item) => {
           const id = item.id || item?.snippet?.resourceId?.videoId;
           const key = `${item.channelId || id}-${item?.snippet?.title}`;
 
