@@ -98,16 +98,14 @@ const DataPage = async ({
   const getPeriod = () => {
     const firstVideoDate = _.chain(dataArray)
       .first()
-      .get("snippet.publishedAt")
+      .thru((v) => _.get(v, "snippet.publishedAt", ""))
       .value();
     const lastVideoDate = _.chain(dataArray)
       .last()
-      .get("snippet.publishedAt")
+      .thru((v) => _.get(v, "snippet.publishedAt", ""))
       .value();
 
-    const formatted = dayjs(firstVideoDate).to(dayjs(lastVideoDate), true);
-
-    return formatted;
+    return dayjs(firstVideoDate).to(dayjs(lastVideoDate), true);
   };
 
   async function getChanelRecentUpload(channelId: string) {
