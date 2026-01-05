@@ -1,6 +1,7 @@
 import _ from "lodash";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
 import mockData from "@/app/dashboard/[channelId]/live/[live]/data.json";
-import fs from "fs";
 import Link from "next/link";
 import { PlayCircleFilled } from "@ant-design/icons";
 import { google } from "googleapis";
@@ -8,6 +9,8 @@ import { getYoutubeApiKey } from "@/config/youtube";
 import { Channels } from "@/app/dashboard/[channelId]/live/[live]/constants";
 import Main from "@/app/dashboard/[channelId]/live/[live]/main";
 import VideoCard from "@/app/dashboard/[channelId]/live/[live]/VideoCard";
+
+dayjs.extend(relativeTime);
 
 const youtube = google.youtube({
   version: "v3",
@@ -35,7 +38,7 @@ const DataPage = async ({
 
   const channelId = channel.id;
 
-  let dataArray = [];
+  let dataArray: any[] = [];
 
   if (mock) {
     dataArray = mockData;
@@ -91,6 +94,21 @@ const DataPage = async ({
 
     return acc + Number(views);
   }, 0);
+
+  const getPeriod = () => {
+    const firstVideoDate = _.chain(dataArray)
+      .first()
+      .get("snippet.publishedAt")
+      .value();
+    const lastVideoDate = _.chain(dataArray)
+      .last()
+      .get("snippet.publishedAt")
+      .value();
+
+    const formatted = dayjs(firstVideoDate).to(dayjs(lastVideoDate), true);
+
+    return formatted;
+  };
 
   async function getChanelRecentUpload(channelId: string) {
     const params = {
@@ -227,7 +245,9 @@ const DataPage = async ({
             />
           </Link>
         )}
-        <div className="ml-auto">Views {formatNumber(totalViews)}</div>
+        <div className="ml-auto">
+          Views {formatNumber(totalViews)} in {getPeriod()}
+        </div>
       </div>
       <Main tesData={graphData.reverse()} />
       <div className="flex w-full flex-wrap">
