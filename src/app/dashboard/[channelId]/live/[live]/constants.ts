@@ -1,4 +1,8 @@
 export const Channels: { [key: string]: { id: string; name: string } } = {
+  FictionBeast: {
+    id: "UCZlodzngfsaCQAKE6wXiuMw",
+    name: "Fiction Beast",
+  },
   TePaEkspozuar: {
     id: "UCHxjdViHPvbFKiOfj74IbeQ",
     name: "Te Pa Ekspozuarit",
